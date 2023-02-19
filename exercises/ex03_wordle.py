@@ -1,8 +1,9 @@
 """Wow, A Structured Wordle!"""
 __author__ = "730374002"
 
-"""defining contains_char function"""
+
 def contains_char(word: str, needle: str) -> bool:
+    """Defining contains_char function."""
     assert len(needle) == 1
     position = 0
     """while loop to search indices for same character"""
@@ -12,18 +13,18 @@ def contains_char(word: str, needle: str) -> bool:
             result = True
             return result
         else:
-            if position == (len(word) - 1):
-                return result
-            else:
-                position = position + 1
+            position = position + 1
+    return result
+
 
 """emojified variables"""
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
-"""Defining emojified function"""
+
 def emojified(guess: str, secret: str) -> str:
+    """Defining emojified function."""
     assert len(guess) == len(secret)
     position = 0
     boxes = ""
@@ -41,8 +42,9 @@ def emojified(guess: str, secret: str) -> str:
         position = position + 1
     return boxes
 
-"""defining input_guess function"""
+
 def input_guess(guess_length: int) -> str:
+    """Defining input_guess function."""
     guess: str = input(f"Enter a {guess_length} character word: ")
     """For wrong input lengths"""
     while len(guess) != guess_length:
@@ -50,13 +52,14 @@ def input_guess(guess_length: int) -> str:
         guess = new_guess
     return guess
 
+
 def main() -> None:
     """The entrypoint of the program and main game loop."""
     turn = 1
     secret = "codes"
     win = False
     """while loop for a max 6-turn game"""
-    while turn <= 6 and win == False:
+    while turn <= 6 and win is False:
         print(f"=== Turn {turn}/6 ===")
         guess = input_guess(len(secret))
         game = emojified(guess, secret)
@@ -69,6 +72,7 @@ def main() -> None:
             win = True
             print(f"You won in {turn}/6 turns!")
         turn = turn + 1
+
 
 """Calling the main function"""
 if __name__ == "__main__":
